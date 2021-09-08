@@ -79,22 +79,8 @@ services:
       - indexer-worker
     volumes:
       - ./ingestion_server:/ingestion_server
-    environment:
-      PYTHONUNBUFFERED: "0"
-      ELASTICSEARCH_URL: 'es'
-      ELASTICSEARCH_PORT: "9200"
-      DATABASE_HOST: 'db'
-      DATABASE_USER: 'deploy'
-      DATABASE_PASSWORD: 'deploy'
-      DATABASE_NAME: 'openledger'
-      DATABASE_PORT: '5432'
-      UPSTREAM_DB_HOST: 'upstream_db'
-      UPSTREAM_DB_PORT: 5432
-      DB_BUFFER_SIZE: '100000'
-      COPY_TABLES: 'image'
-      SYNCER_POLL_INTERVAL: '60'
-      LOCK_PATH: /worker_state/lock
-      SHELF_PATH: /worker_state/db
+    env_file:
+      - ingestion_server/.env.docker
     stdin_open: true
     tty: true
 
@@ -109,22 +95,8 @@ services:
       - es
     volumes:
       - ./ingestion_server:/ingestion_server
-    environment:
-      PYTHONUNBUFFERED: "0"
-      ELASTICSEARCH_URL: 'es'
-      ELASTICSEARCH_PORT: "9200"
-      DATABASE_HOST: 'db'
-      DATABASE_USER: 'deploy'
-      DATABASE_PASSWORD: 'deploy'
-      DATABASE_NAME: 'openledger'
-      DATABASE_PORT: '5432'
-      UPSTREAM_DB_HOST: 'upstream_db'
-      UPSTREAM_DB_PORT: 5432
-      DB_BUFFER_SIZE: '100000'
-      COPY_TABLES: 'image'
-      SYNCER_POLL_INTERVAL: '60'
-      LOCK_PATH: /worker_state/lock
-      SHELF_PATH: /worker_state/db
+    env_file:
+      - ingestion_server/.env.docker
     stdin_open: true
     tty: true
 
