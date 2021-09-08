@@ -64,23 +64,8 @@ services:
       - db
       - es
       - cache
-    environment:
-      - DJANGO_DATABASE_NAME=openledger
-      - DJANGO_DATABASE_USER=deploy
-      - DJANGO_DATABASE_PASSWORD=deploy
-      - DJANGO_DATABASE_HOST=db
-      - REDIS_HOST=cache
-      - UPSTREAM_DATABASE_HOST=upstream_db
-      - PYTHONUNBUFFERED=0
-      - DJANGO_DEBUG_ENABLED=True
-      - ELASTICSEARCH_URL=es
-      - ELASTICSEARCH_PORT=9200
-      - DISABLE_GLOBAL_THROTTLING=True
-      - ROOT_SHORTENING_URL=localhost:8000
-      - THUMBNAIL_PROXY_URL=http://thumbs:8222
-      - DJANGO_SECRET_KEY=ny#b__$$f6ry4wy8oxre97&-68u_0lk3gw(z=d40_dxey3zw0v1
-      - AWS_SECRET_ACCESS_KEY=''
-      - AWS_ACCESS_KEY_ID=''
+    env_file:
+      - openverse-api/.env.docker
     stdin_open: true
     tty: true
 
