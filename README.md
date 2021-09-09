@@ -31,8 +31,8 @@ This repository is primarily concerned with back end infrastructure like datasto
 4. Wait until your CMD or terminal displays that it is starting development server at `http://0.0.0.0:8000/`. Leave this terminal open and launch a new one.
     ![Initialization](initialization.PNG)
 
-5. Point your browser to `localhost:8000`. You should be able to see the API documentation.
-    ![Local API Documentation](local_api_documentation.PNG)
+5. Point your browser to `localhost:8000`. You should be able to see the API documentation.  
+    ![Local API documentation](local_api_documentation.PNG)
 
 6. Load the sample data. This should take a couple of minutes.
     ```bash
@@ -44,7 +44,22 @@ This repository is primarily concerned with back end infrastructure like datasto
     curl localhost:8000/v1/images/?q=honey
     ```
 
-    ![Sample API_Request](localhost_request.PNG)
+    Piping the response through `json_pp` should yield an output like this.
+    ```bash
+    curl localhost:8000/v1/images/?q=honey | json_pp
+    ```
+
+    ```json
+    [
+        {
+            "source_name": "flickr",
+            "display_name": "Flickr",
+            "source_url": "https://www.flickr.com",
+            "logo_url": null,
+            "media_count": 1000
+        }
+    ]
+    ```
 
 8. When done, bring the system down.
     ```bash
@@ -79,9 +94,9 @@ To make this setting take effect, update kernel state.
 sudo sysctl -p
 ```
 
-## System Architecture
+## System architecture
 
-![System Architecture](system_architecture.png)
+![System architecture](system_architecture.png)
 
 ### Basic flow of data
 
