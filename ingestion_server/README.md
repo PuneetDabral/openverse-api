@@ -31,8 +31,7 @@ The server is designed to be run in a private network only. You must not expose 
     pipenv install
     ```
 
-3. Start the server. Pipenv will automatically read the necessary environment
-variables from `.env`.
+3. Start the Gunicorn server. Pipenv will automatically read the necessary environment variables from `.env`.
     ```bash
     pipenv run gunicorn
     ```
